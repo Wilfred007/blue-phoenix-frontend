@@ -1,7 +1,11 @@
 import { Logo } from './Logo';
 import { Mail, Phone } from 'lucide-react';
 
-export const Footer = () => {
+interface FooterProps {
+  onBookClick: () => void;
+}
+
+export const Footer = ({ onBookClick }: FooterProps) => {
   return (
     <footer className="bg-brand-black pt-20 pb-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
@@ -12,7 +16,7 @@ export const Footer = () => {
               Helping organizations build stronger workplaces by aligning the right people, systems, and culture for sustainable growth.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-primary transition-colors text-white">
+              <a href="mailto:info@bluephoenix.ltd" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-primary transition-colors text-white">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -21,10 +25,10 @@ export const Footer = () => {
           <div>
             <h4 className="text-white mb-6">Solutions</h4>
             <ul className="space-y-4 text-brand-gray text-sm">
-              <li><a href="#" className="hover:text-brand-secondary">Recruitment</a></li>
-              <li><a href="#" className="hover:text-brand-secondary">Team Structuring</a></li>
-              <li><a href="#" className="hover:text-brand-secondary">Leadership Training</a></li>
-              <li><a href="#" className="hover:text-brand-secondary">Culture Audit</a></li>
+              <li><a href="#services" className="hover:text-brand-secondary">Recruitment</a></li>
+              <li><a href="#services" className="hover:text-brand-secondary">Team Structuring</a></li>
+              <li><a href="#services" className="hover:text-brand-secondary">Leadership Training</a></li>
+              <li><a href="#services" className="hover:text-brand-secondary">Culture Audit</a></li>
             </ul>
           </div>
 
@@ -38,6 +42,14 @@ export const Footer = () => {
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-brand-secondary" />
                 +44 (0) 20 1234 5678
+              </li>
+              <li>
+                <button 
+                  onClick={onBookClick}
+                  className="text-brand-secondary hover:text-white transition-colors flex items-center gap-2"
+                >
+                  Schedule a Call →
+                </button>
               </li>
               <li className="text-xs mt-4">
                 © 2026 Bluephoenix Consulting LTD. All rights reserved.

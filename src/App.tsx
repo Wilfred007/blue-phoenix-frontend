@@ -1,15 +1,22 @@
+import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/sections/Hero';
 import { Services } from './components/sections/Services';
 import { Process } from './components/sections/Process';
 import { Footer } from './components/Footer';
+import { BookingModal } from './components/BookingModal';
 
 function App() {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  const openModal = () => setIsBookingModalOpen(true);
+  const closeModal = () => setIsBookingModalOpen(false);
+
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar onBookClick={openModal} />
       <main>
-        <Hero />
+        <Hero onBookClick={openModal} />
         <Services />
         <Process />
         {/* Call to Action Section */}
@@ -19,13 +26,18 @@ function App() {
             <p className="text-xl text-brand-gray mb-12 max-w-2xl mx-auto">
               Transform your organization's culture and performance. Let's find the right people for your organization.
             </p>
-            <button className="btn-primary px-10 py-4 text-lg">
+            <button 
+              onClick={openModal}
+              className="btn-primary px-10 py-4 text-lg"
+            >
               Get Started with a Consultation
             </button>
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer onBookClick={openModal} />
+      
+      <BookingModal isOpen={isBookingModalOpen} onClose={closeModal} />
     </div>
   );
 }

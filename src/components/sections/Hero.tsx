@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-export const Hero = () => {
+interface HeroProps {
+  onBookClick: () => void;
+}
+
+export const Hero = ({ onBookClick }: HeroProps) => {
   return (
     <section className="relative min-height-[90vh] flex items-center pt-20 overflow-hidden">
       {/* Background Blobs */}
@@ -36,8 +40,11 @@ export const Hero = () => {
               Explore Our Services
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="px-6 py-3 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-semibold">
-              Meet the Team
+            <button 
+              onClick={onBookClick}
+              className="px-6 py-3 rounded-full border border-white/10 hover:bg-white/5 transition-all text-white font-semibold"
+            >
+              Book a Consultation
             </button>
           </div>
 

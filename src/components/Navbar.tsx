@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 
-export const Navbar = () => {
+interface NavbarProps {
+  onBookClick: () => void;
+}
+
+export const Navbar = ({ onBookClick }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,8 +33,11 @@ export const Navbar = () => {
               {item}
             </a>
           ))}
-          <button className="btn-primary py-2 px-5 text-sm">
-            Contact Us
+          <button 
+            onClick={onBookClick}
+            className="btn-primary py-2 px-5 text-sm"
+          >
+            Book a Consultation
           </button>
         </div>
 
